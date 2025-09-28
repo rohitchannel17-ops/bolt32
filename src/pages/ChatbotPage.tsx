@@ -80,148 +80,235 @@ const ChatbotPage = () => {
 
   const questionnaires = {
     'anxiety-disorders': [
-      { id: '1', text: 'How often do you experience anxiety in a typical week? (Please describe in detail)', type: 'text', required: true },
-      { id: '2', text: 'Do you experience physical symptoms like sweating, rapid heartbeat, or trembling? Please describe what you feel.', type: 'text', required: true },
-      { id: '3', text: 'Which situations typically trigger your anxiety? Please list them.', type: 'text', required: true },
-      { id: '4', text: 'How would you rate the intensity of your anxiety when it occurs on a scale of 1-10? Please explain.', type: 'text', required: true },
-      { id: '5', text: 'Do you avoid certain situations because of anxiety? If yes, which ones?', type: 'text', required: true },
-      { id: '6', text: 'How does anxiety affect your daily activities? Please describe the impact.', type: 'text', required: true },
-      { id: '7', text: 'Have you tried any coping strategies before? Please list what you\'ve tried.', type: 'text', required: false },
-      { id: '8', text: 'How long have you been experiencing anxiety? Please provide details.', type: 'text', required: true },
-      { id: '9', text: 'Do you have panic attacks? Please describe your experience.', type: 'text', required: true },
-      { id: '10', text: 'Describe a recent situation where you felt anxious:', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you tell me about a recent time when you felt anxious?', type: 'open', required: true },
+      { id: '2', text: 'How does anxiety show up in your daily life?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you experience physical symptoms when anxious (like rapid heartbeat, sweating, or trembling)?', type: 'closed', required: true },
+      { id: '4', text: 'Have you ever had a panic attack?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how intense is your anxiety when it happens?', type: 'scaling', required: true },
+      { id: '6', text: 'How much does anxiety interfere with your daily activities? (1 = not at all, 10 = completely)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you usually do when you start feeling anxious?', type: 'behavioral', required: true },
+      { id: '8', text: 'Are there situations you avoid because of anxiety?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you think triggers your anxiety the most?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would your life look like if anxiety didn\'t hold you back?', type: 'future', required: true }
     ],
     depression: [
-      { id: '1', text: 'How often do you feel sad or down? Please describe your experience.', type: 'text', required: true },
-      { id: '2', text: 'Have you lost interest in activities you used to enjoy? Please explain.', type: 'text', required: true },
-      { id: '3', text: 'How would you rate your energy levels? Please describe how you feel.', type: 'text', required: true },
-      { id: '4', text: 'Do you have trouble sleeping or sleep too much? Please describe your sleep patterns.', type: 'text', required: true },
-      { id: '5', text: 'How is your appetite? Please describe any changes.', type: 'text', required: true },
-      { id: '6', text: 'Do you have feelings of worthlessness or guilt? Please describe these feelings.', type: 'text', required: true },
-      { id: '7', text: 'How difficult is it to concentrate or make decisions? Please explain.', type: 'text', required: true },
-      { id: '8', text: 'Have you had thoughts of death or suicide? Please share if you feel comfortable.', type: 'text', required: true },
-      { id: '9', text: 'How long have you been feeling this way? Please provide details.', type: 'text', required: true },
-      { id: '10', text: 'What do you think might be contributing to these feelings?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you describe how you\'ve been feeling lately?', type: 'open', required: true },
+      { id: '2', text: 'Tell me about your energy levels and motivation recently.', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Have you lost interest in activities you used to enjoy?', type: 'closed', required: true },
+      { id: '4', text: 'Are you experiencing changes in your sleep or appetite?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how would you rate your mood most days?', type: 'scaling', required: true },
+      { id: '6', text: 'How difficult is it for you to concentrate or make decisions? (1 = very easy, 10 = extremely difficult)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do when you\'re feeling really low?', type: 'behavioral', required: true },
+      { id: '8', text: 'How do you typically spend your days when you\'re feeling down?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you think might be contributing to how you\'re feeling?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would feeling better look like for you?', type: 'future', required: true }
     ],
     stress: [
-      { id: '1', text: 'How stressed do you feel on a typical day? Please describe your stress levels.', type: 'text', required: true },
-      { id: '2', text: 'What are your main sources of stress? Please list them.', type: 'text', required: true },
-      { id: '3', text: 'Do you experience physical symptoms of stress? Please describe them.', type: 'text', required: true },
-      { id: '4', text: 'How well do you currently manage stress? Please explain your methods.', type: 'text', required: true },
-      { id: '5', text: 'Do you feel overwhelmed by daily responsibilities? Please describe how.', type: 'text', required: true },
-      { id: '6', text: 'How often do you take time for relaxation? Please describe your routine.', type: 'text', required: true },
-      { id: '7', text: 'What stress management techniques have you tried? Please list them.', type: 'text', required: false },
-      { id: '8', text: 'How does stress affect your relationships? Please explain.', type: 'text', required: true },
-      { id: '9', text: 'Do you use unhealthy coping mechanisms? Please describe them.', type: 'text', required: true },
-      { id: '10', text: 'Describe your most stressful situation recently:', type: 'text', required: false }
-    ],
-    motivation: [
-      { id: '1', text: 'How motivated do you feel on a typical day? Please describe your motivation levels.', type: 'text', required: true },
-      { id: '2', text: 'In which areas do you lack motivation? Please list them.', type: 'text', required: true },
-      { id: '3', text: 'Do you have clear goals for yourself? Please describe your goals.', type: 'text', required: true },
-      { id: '4', text: 'How often do you procrastinate? Please describe your procrastination habits.', type: 'text', required: true },
-      { id: '5', text: 'What do you think causes your low motivation? Please explain.', type: 'text', required: true },
-      { id: '6', text: 'How satisfied are you with your current life? Please explain your satisfaction level.', type: 'text', required: true },
-      { id: '7', text: 'Do you celebrate small wins and achievements? Please describe how.', type: 'text', required: true },
-      { id: '8', text: 'How supportive is your environment? Please describe your support system.', type: 'text', required: true },
-      { id: '9', text: 'What activities used to motivate you?', type: 'text', required: false },
-      { id: '10', text: 'What would help you feel more motivated?', type: 'text', required: false }
-    ],
-    relationships: [
-      { id: '1', text: 'How satisfied are you with your current relationships? Please explain.', type: 'text', required: true },
-      { id: '2', text: 'What type of relationship issues are you experiencing? Please describe them.', type: 'text', required: true },
-      { id: '3', text: 'Do you feel heard and understood by others? Please explain your experience.', type: 'text', required: true },
-      { id: '4', text: 'How comfortable are you expressing your feelings? Please describe.', type: 'text', required: true },
-      { id: '5', text: 'Do you have difficulty setting boundaries? Please explain your challenges.', type: 'text', required: true },
-      { id: '6', text: 'How do you typically handle conflict? Please describe your approach.', type: 'text', required: true },
-      { id: '7', text: 'Do you feel lonely or isolated? Please describe these feelings.', type: 'text', required: true },
-      { id: '8', text: 'How supportive do you feel your relationships are? Please explain.', type: 'text', required: true },
-      { id: '9', text: 'What relationship patterns do you want to change?', type: 'text', required: false },
-      { id: '10', text: 'What does a healthy relationship look like to you?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'What are the main sources of stress in your life right now?', type: 'open', required: true },
+      { id: '2', text: 'Can you describe how stress feels in your body?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you feel overwhelmed by your daily responsibilities?', type: 'closed', required: true },
+      { id: '4', text: 'Do you have time for relaxation in your typical day?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how stressed do you feel on a typical day?', type: 'scaling', required: true },
+      { id: '6', text: 'How well do you feel you manage stress currently? (1 = very poorly, 10 = very well)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you usually do when you feel stressed?', type: 'behavioral', required: true },
+      { id: '8', text: 'How does stress affect the way you interact with others?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What patterns do you notice in your stress levels?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would help you feel more in control of your stress?', type: 'future', required: true }
     ],
     insomnia: [
-      { id: '1', text: 'How many hours of sleep do you typically get per night? Please describe your sleep patterns.', type: 'text', required: true },
-      { id: '2', text: 'How long does it usually take you to fall asleep? Please explain any difficulties.', type: 'text', required: true },
-      { id: '3', text: 'Do you wake up frequently during the night? Please describe your experience.', type: 'text', required: true },
-      { id: '4', text: 'How do you feel when you wake up in the morning? Please describe your energy levels.', type: 'text', required: true },
-      { id: '5', text: 'What factors do you think contribute to your sleep problems? Please list them.', type: 'text', required: true },
-      { id: '6', text: 'Do you have a bedtime routine? Please describe what you do before sleep.', type: 'text', required: true },
-      { id: '7', text: 'How does poor sleep affect your daily life? Please explain the impact.', type: 'text', required: true },
-      { id: '8', text: 'Do you use any sleep aids or medications? Please describe what you use.', type: 'text', required: false },
-      { id: '9', text: 'How long have you been experiencing sleep problems? Please provide details.', type: 'text', required: true },
-      { id: '10', text: 'Describe your ideal sleep environment and routine:', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you walk me through what a typical night looks like for you?', type: 'open', required: true },
+      { id: '2', text: 'How do you feel when you wake up in the morning?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you wake up frequently during the night?', type: 'closed', required: true },
+      { id: '4', text: 'Do you have a regular bedtime routine?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'How many hours of sleep do you typically get per night?', type: 'scaling', required: true },
+      { id: '6', text: 'On a scale of 1-10, how rested do you feel when you wake up?', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do when you can\'t fall asleep?', type: 'behavioral', required: true },
+      { id: '8', text: 'How does poor sleep affect your next day?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you think might be contributing to your sleep difficulties?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would good sleep mean for your overall well-being?', type: 'future', required: true }
     ],
     trauma: [
-      { id: '1', text: 'Have you experienced or witnessed a traumatic event? Please share what you feel comfortable discussing.', type: 'text', required: true },
-      { id: '2', text: 'Do you experience flashbacks or intrusive memories? Please describe these experiences.', type: 'text', required: true },
-      { id: '3', text: 'Do you avoid certain places, people, or situations? Please explain what you avoid and why.', type: 'text', required: true },
-      { id: '4', text: 'How has this trauma affected your relationships? Please describe the impact.', type: 'text', required: true },
-      { id: '5', text: 'Do you experience nightmares or sleep disturbances? Please describe your sleep patterns.', type: 'text', required: true },
-      { id: '6', text: 'How do you feel about your safety in daily life? Please explain your concerns.', type: 'text', required: true },
-      { id: '7', text: 'Do you experience emotional numbness or detachment? Please describe these feelings.', type: 'text', required: true },
-      { id: '8', text: 'How do you currently cope with trauma-related symptoms? Please list your strategies.', type: 'text', required: false },
-      { id: '9', text: 'Do you have a support system? Please describe your support network.', type: 'text', required: true },
-      { id: '10', text: 'What would help you feel safer and more in control?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you share what you feel comfortable telling me about your experience?', type: 'open', required: true },
+      { id: '2', text: 'How has this experience affected your daily life?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you experience flashbacks or intrusive memories?', type: 'closed', required: true },
+      { id: '4', text: 'Are there places or situations you now avoid?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how safe do you feel in your daily life?', type: 'scaling', required: true },
+      { id: '6', text: 'How much do these experiences interfere with your relationships? (1 = not at all, 10 = completely)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do when you\'re feeling triggered or overwhelmed?', type: 'behavioral', required: true },
+      { id: '8', text: 'How do you cope with difficult memories when they come up?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you notice about your body and emotions when you\'re reminded of the experience?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would feeling safe and in control look like for you?', type: 'future', required: true }
     ],
     'self-esteem': [
-      { id: '1', text: 'How do you typically view yourself? Please describe your self-perception.', type: 'text', required: true },
-      { id: '2', text: 'Do you often doubt your abilities or decisions? Please explain when this happens.', type: 'text', required: true },
-      { id: '3', text: 'How do you handle criticism or feedback? Please describe your reactions.', type: 'text', required: true },
-      { id: '4', text: 'Do you compare yourself to others frequently? Please describe these comparisons.', type: 'text', required: true },
-      { id: '5', text: 'What negative thoughts do you have about yourself? Please share what you feel comfortable with.', type: 'text', required: true },
-      { id: '6', text: 'How confident do you feel in social or work situations? Please explain.', type: 'text', required: true },
-      { id: '7', text: 'Do you celebrate your achievements? Please describe how you acknowledge successes.', type: 'text', required: true },
-      { id: '8', text: 'What do you think contributes to your low self-esteem? Please explain.', type: 'text', required: true },
-      { id: '9', text: 'How does low self-esteem affect your daily life? Please describe the impact.', type: 'text', required: true },
-      { id: '10', text: 'What would help you feel more confident and self-assured?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'How do you typically talk to yourself in your mind?', type: 'open', required: true },
+      { id: '2', text: 'Tell me about a time when you felt really good about yourself.', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you often compare yourself to others?', type: 'closed', required: true },
+      { id: '4', text: 'Do you find it hard to accept compliments?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how confident do you feel in social situations?', type: 'scaling', required: true },
+      { id: '6', text: 'How much do you doubt your abilities or decisions? (1 = never, 10 = constantly)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'How do you react when someone gives you feedback or criticism?', type: 'behavioral', required: true },
+      { id: '8', text: 'What do you do when you make a mistake?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you think shaped how you see yourself?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'How would you like to feel about yourself?', type: 'future', required: true }
     ],
     'emotional-dysregulation': [
-      { id: '1', text: 'Do you experience intense emotions that feel overwhelming? Please describe these experiences.', type: 'text', required: true },
-      { id: '2', text: 'How quickly do your emotions change throughout the day? Please explain the patterns.', type: 'text', required: true },
-      { id: '3', text: 'Do you have difficulty calming down when upset? Please describe your experience.', type: 'text', required: true },
-      { id: '4', text: 'How do you typically express your emotions? Please describe your emotional responses.', type: 'text', required: true },
-      { id: '5', text: 'Do your emotions feel disproportionate to the situation? Please explain when this happens.', type: 'text', required: true },
-      { id: '6', text: 'How do your emotional reactions affect your relationships? Please describe the impact.', type: 'text', required: true },
-      { id: '7', text: 'What triggers your most intense emotional responses? Please list these triggers.', type: 'text', required: true },
-      { id: '8', text: 'Do you use any strategies to manage your emotions? Please describe what you\'ve tried.', type: 'text', required: false },
-      { id: '9', text: 'How long have you struggled with emotional regulation? Please provide details.', type: 'text', required: true },
-      { id: '10', text: 'What would help you feel more emotionally balanced?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you describe what it feels like when your emotions feel overwhelming?', type: 'open', required: true },
+      { id: '2', text: 'Tell me about how your emotions change throughout a typical day.', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you have difficulty calming down when you\'re upset?', type: 'closed', required: true },
+      { id: '4', text: 'Do your emotions sometimes feel too big for the situation?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how intense are your emotions when they hit?', type: 'scaling', required: true },
+      { id: '6', text: 'How much control do you feel over your emotional reactions? (1 = no control, 10 = complete control)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do when you feel emotionally overwhelmed?', type: 'behavioral', required: true },
+      { id: '8', text: 'How do your emotional reactions affect your relationships?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you notice triggers your most intense emotional responses?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would emotional balance feel like for you?', type: 'future', required: true }
+    ],
     ],
     'negative-thoughts': [
-      { id: '1', text: 'Do you find yourself stuck in negative thinking patterns? Please describe these thoughts.', type: 'text', required: true },
-      { id: '2', text: 'How much time do you spend overthinking situations? Please explain your thought processes.', type: 'text', required: true },
-      { id: '3', text: 'Do you replay conversations or events in your mind repeatedly? Please describe this experience.', type: 'text', required: true },
-      { id: '4', text: 'What types of negative thoughts are most common for you? Please list them.', type: 'text', required: true },
-      { id: '5', text: 'Do these thought patterns interfere with your daily activities? Please explain how.', type: 'text', required: true },
-      { id: '6', text: 'How do you currently try to stop negative thinking? Please describe your methods.', type: 'text', required: true },
-      { id: '7', text: 'Do you catastrophize or imagine worst-case scenarios? Please explain when this happens.', type: 'text', required: true },
-      { id: '8', text: 'How do these thought patterns affect your mood? Please describe the connection.', type: 'text', required: true },
-      { id: '9', text: 'When did you first notice these negative thinking patterns? Please provide details.', type: 'text', required: true },
-      { id: '10', text: 'What would help you develop more balanced thinking patterns?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'What kinds of thoughts tend to get stuck in your mind?', type: 'open', required: true },
+      { id: '2', text: 'Can you describe what it\'s like when you\'re overthinking?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you replay conversations or events in your mind repeatedly?', type: 'closed', required: true },
+      { id: '4', text: 'Do you often imagine worst-case scenarios?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'How much time would you say you spend overthinking each day? (1 = very little, 10 = most of the day)', type: 'scaling', required: true },
+      { id: '6', text: 'How much do negative thoughts interfere with your daily activities? (1 = not at all, 10 = completely)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do when you notice you\'re stuck in negative thinking?', type: 'behavioral', required: true },
+      { id: '8', text: 'How do these thought patterns affect your mood and behavior?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What do you notice about when these negative thoughts are strongest?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would it be like to have more balanced, peaceful thoughts?', type: 'future', required: true }
     ],
     'social-anxiety': [
-      { id: '1', text: 'In which social situations do you feel most anxious? Please describe these situations.', type: 'text', required: true },
-      { id: '2', text: 'Do you worry about being judged or embarrassed in social settings? Please explain these concerns.', type: 'text', required: true },
-      { id: '3', text: 'How do you feel before, during, and after social interactions? Please describe your experience.', type: 'text', required: true },
-      { id: '4', text: 'Do you avoid social situations because of anxiety? Please list which ones you avoid.', type: 'text', required: true },
-      { id: '5', text: 'How does social anxiety affect your work or school performance? Please explain the impact.', type: 'text', required: true },
-      { id: '6', text: 'Do you experience physical symptoms in social situations? Please describe what you feel.', type: 'text', required: true },
-      { id: '7', text: 'How has social anxiety affected your friendships and relationships? Please explain.', type: 'text', required: true },
-      { id: '8', text: 'What strategies have you tried to manage social anxiety? Please list them.', type: 'text', required: false },
-      { id: '9', text: 'When did you first notice social anxiety symptoms? Please provide details.', type: 'text', required: true },
-      { id: '10', text: 'What would help you feel more comfortable in social situations?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'Can you tell me about a social situation that felt particularly difficult for you?', type: 'open', required: true },
+      { id: '2', text: 'How do you feel before, during, and after social interactions?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you worry about being judged or embarrassed in social settings?', type: 'closed', required: true },
+      { id: '4', text: 'Do you avoid certain social situations because of anxiety?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how anxious do you feel in group settings?', type: 'scaling', required: true },
+      { id: '6', text: 'How much does social anxiety affect your work or school? (1 = not at all, 10 = severely)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'What do you do to prepare for social situations?', type: 'behavioral', required: true },
+      { id: '8', text: 'How do you handle it when you feel anxious around others?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What thoughts go through your mind in social situations?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would feeling comfortable in social situations mean for your life?', type: 'future', required: true }
     ],
     adjustment: [
-      { id: '1', text: 'What major life changes or transitions are you currently experiencing? Please describe them.', type: 'text', required: true },
-      { id: '2', text: 'How are you coping with these changes? Please describe your adjustment process.', type: 'text', required: true },
-      { id: '3', text: 'Do you feel uncertain about your identity or life direction? Please explain these feelings.', type: 'text', required: true },
-      { id: '4', text: 'How have these changes affected your relationships? Please describe the impact.', type: 'text', required: true },
-      { id: '5', text: 'Do you feel like you\'ve lost your sense of self? Please explain this experience.', type: 'text', required: true },
-      { id: '6', text: 'What aspects of your identity are you questioning? Please describe your concerns.', type: 'text', required: true },
-      { id: '7', text: 'How do you envision your future self? Please describe your hopes and concerns.', type: 'text', required: true },
-      { id: '8', text: 'What support do you have during this transition? Please describe your support system.', type: 'text', required: true },
-      { id: '9', text: 'What values and beliefs are most important to you? Please list them.', type: 'text', required: false },
-      { id: '10', text: 'What would help you feel more grounded and secure in your identity?', type: 'text', required: false }
+      // Open-ended questions (2)
+      { id: '1', text: 'What major changes or transitions are happening in your life right now?', type: 'open', required: true },
+      { id: '2', text: 'How are you feeling about these changes?', type: 'open', required: true },
+      
+      // Closed questions (2)
+      { id: '3', text: 'Do you feel uncertain about your identity or life direction?', type: 'closed', required: true },
+      { id: '4', text: 'Have these changes affected your relationships?', type: 'closed', required: true },
+      
+      // Scaling questions (2)
+      { id: '5', text: 'On a scale of 1-10, how well are you coping with these changes?', type: 'scaling', required: true },
+      { id: '6', text: 'How grounded and secure do you feel in who you are? (1 = very lost, 10 = very secure)', type: 'scaling', required: true },
+      
+      // Behavioral questions (2)
+      { id: '7', text: 'How do you handle uncertainty about the future?', type: 'behavioral', required: true },
+      { id: '8', text: 'What do you do when you feel lost or confused about your identity?', type: 'behavioral', required: true },
+      
+      // Reflective question (1)
+      { id: '9', text: 'What aspects of yourself feel most stable right now?', type: 'reflective', required: true },
+      
+      // Future-oriented question (1)
+      { id: '10', text: 'What would feeling more grounded and secure in yourself look like?', type: 'future', required: true }
     ]
   };
 
@@ -293,6 +380,10 @@ const ChatbotPage = () => {
     if (!currentAssessment) return;
 
     const currentQuestion = currentAssessment.questions[currentQuestionIndex];
+    
+    // Add the question and response to chat history
+    addMessage(currentQuestion.text, 'bot');
+    addMessage(response, 'user');
 
     const updatedAssessment = {
       ...currentAssessment,
@@ -609,19 +700,112 @@ const ChatbotPage = () => {
                   {currentQuestion.text}
                 </h3>
 
-              {/* Text Input for All Questions */}
-              <div className="space-y-4">
-                <textarea
-                  placeholder="Please type your answer here..."
-                  value={currentTextResponse}
-                  rows={4}
-                  className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none ${
-                    theme === 'dark'
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
-                  }`}
-                  onChange={(e) => setCurrentTextResponse(e.target.value)}
-                />
+                {/* Question Type Specific Input */}
+                <div className="space-y-4">
+                  {currentQuestion.type === 'closed' ? (
+                    <div className="space-y-3">
+                      <div className="flex space-x-4">
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => setCurrentTextResponse('Yes')}
+                          className={`flex-1 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            currentTextResponse === 'Yes'
+                              ? 'bg-gradient-to-r from-green-500 to-teal-500 text-white'
+                              : theme === 'dark'
+                              ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          Yes
+                        </motion.button>
+                        <motion.button
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => setCurrentTextResponse('No')}
+                          className={`flex-1 py-3 rounded-lg font-medium transition-all duration-200 ${
+                            currentTextResponse === 'No'
+                              ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white'
+                              : theme === 'dark'
+                              ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          No
+                        </motion.button>
+                      </div>
+                      {currentTextResponse && (
+                        <textarea
+                          placeholder="Would you like to add any details?"
+                          value={currentTextResponse.includes('Yes') || currentTextResponse.includes('No') ? 
+                            currentTextResponse.split(' - ')[1] || '' : currentTextResponse}
+                          rows={2}
+                          className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none ${
+                            theme === 'dark'
+                              ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                          }`}
+                          onChange={(e) => {
+                            const baseAnswer = currentTextResponse.includes('Yes') ? 'Yes' : 'No';
+                            setCurrentTextResponse(e.target.value ? `${baseAnswer} - ${e.target.value}` : baseAnswer);
+                          }}
+                        />
+                      )}
+                    </div>
+                  ) : currentQuestion.type === 'scaling' ? (
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-center mb-4">
+                          <span className={`text-3xl font-bold text-purple-500`}>
+                            {currentTextResponse || '5'}
+                          </span>
+                        </div>
+                        <input
+                          type="range"
+                          min="1"
+                          max="10"
+                          value={currentTextResponse || '5'}
+                          onChange={(e) => setCurrentTextResponse(e.target.value)}
+                          className="w-full h-3 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-green-400 to-red-500"
+                        />
+                        <div className="flex justify-between text-sm mt-2">
+                          <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>1</span>
+                          <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>10</span>
+                        </div>
+                      </div>
+                      <textarea
+                        placeholder="Can you tell me more about this rating?"
+                        rows={2}
+                        className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none ${
+                          theme === 'dark'
+                            ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                            : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                        }`}
+                        onChange={(e) => {
+                          const rating = currentTextResponse?.split(' - ')[0] || '5';
+                          setCurrentTextResponse(e.target.value ? `${rating} - ${e.target.value}` : rating);
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <textarea
+                      placeholder={
+                        currentQuestion.type === 'open' ? "Please share your thoughts and feelings..." :
+                        currentQuestion.type === 'behavioral' ? "Describe what you typically do..." :
+                        currentQuestion.type === 'reflective' ? "Take a moment to reflect..." :
+                        currentQuestion.type === 'future' ? "Imagine your ideal situation..." :
+                        "Please type your answer here..."
+                      }
+                      value={currentTextResponse}
+                      rows={4}
+                      className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none ${
+                        theme === 'dark'
+                          ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400'
+                          : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500'
+                      }`}
+                      onChange={(e) => setCurrentTextResponse(e.target.value)}
+                    />
+                  )}
 
                 {/* Navigation Buttons */}
                 <div className="flex justify-between">
@@ -649,7 +833,7 @@ const ChatbotPage = () => {
                     {currentQuestionIndex === currentAssessment.questions.length - 1 ? 'Finish Assessment' : 'Next Question'}
                   </motion.button>
                 </div>
-              </div>
+                </div>
               </motion.div>
             </div>
           )}
